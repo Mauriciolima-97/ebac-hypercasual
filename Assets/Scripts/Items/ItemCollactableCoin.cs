@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ItemCollactableCoin : ItemCollactableBase
 {
-    public Collider2D collider;
+    public Collider2D myCollider;
 
     protected override void OnCollect()
     {
         base.OnCollect();
         ItemManager.Instance.AddCoins();
-        collider.enabled = false;
+        myCollider.enabled = false;
     }
 
 }

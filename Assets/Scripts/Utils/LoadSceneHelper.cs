@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class LoadScene : MonoBehaviour
+public class LoadSceneHelper : MonoBehaviour
 {
     public void Load(int i)
     {
@@ -15,3 +15,5 @@ public class LoadScene : MonoBehaviour
         SceneManager.LoadScene(s);
     }
 }
+
+
