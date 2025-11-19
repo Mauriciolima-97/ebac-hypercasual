@@ -7,6 +7,7 @@ public class LerpHelper : MonoBehaviour
     public Transform target;
 
     public float lerpSpeed = 1f;
+
     void Start()
     {
         
