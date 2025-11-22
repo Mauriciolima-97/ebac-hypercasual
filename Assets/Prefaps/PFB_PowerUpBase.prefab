@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3892413722904868643}
   - component: {fileID: 6557594091234862082}
-  - component: {fileID: 458187264477774244}
+  - component: {fileID: 748675060654459118}
   m_Layer: 0
   m_Name: PFB_PowerUpBase
   m_TagString: Untagged
@@ -55,7 +55,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &458187264477774244
+--- !u!114 &748675060654459118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,14 +64,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6946937008972290071}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bdf95230ddee064ca7bdb590e290cf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfb129ec91aee840bb0d5b28307c8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: Player
   particleSystem: {fileID: 0}
   timeToHide: 3
-  graphicItem: {fileID: 6946937008972290071}
-  duration: 3
+  graphicItem: {fileID: 7104066818862218821}
+  duration: 2
+  sizeAmount: 7
 --- !u!1 &7104066818862218821
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5ad5f2f9b2cbff343bfc9e5ebecc7c02, type: 2}
+  - {fileID: 2100000, guid: bedeb528c61bdb24fab45243489237f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

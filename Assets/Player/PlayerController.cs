@@ -24,6 +24,9 @@ public class PlayerController : Singleton<PlayerController>
     [Header("TextMeshPro")]
     public TextMeshPro uiTextPowerUp;
 
+    [Header("Coin Setup")]
+    public GameObject coinCollector;
+
     public bool invencible = false;
 
     //Privates
@@ -107,6 +110,11 @@ public class PlayerController : Singleton<PlayerController>
     public void ResetHeight()
     { 
         transform.DOMoveY(_startPosition.y, .1f);
+    }
+
+    public void ChangeCoinCollectorSize(float amount)
+    { 
+        coinCollector.transform.localScale = Vector3.one * amount;
     }
     #endregion
 

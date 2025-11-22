@@ -11,6 +11,7 @@ public class PowerUpBase : ItemCollactableBase
     {
         base.OnCollect();
         StartPowerUp();
+
     }
     protected virtual void StartPowerUp()
     {
