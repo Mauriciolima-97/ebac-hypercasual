@@ -41,7 +41,7 @@ public class ItemCollactableBase : MonoBehaviour
     {
         if (particleSystem != null) particleSystem.Play();
        // AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
-        Destroy(gameObject);
+        //Destroy(gameObject);
 
     }
 }
