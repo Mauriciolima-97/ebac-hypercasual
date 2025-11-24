@@ -21,13 +21,16 @@ public class PlayerController : Singleton<PlayerController>
 
     public GameObject endScreen;
 
-    [Header("TextMeshPro")]
+    [Header("Text")]
     public TextMeshPro uiTextPowerUp;
 
     [Header("Coin Setup")]
     public GameObject coinCollector;
 
     public bool invencible = false;
+
+    [Header("Animation")]
+    public AnimatorManager animatorManager;
 
     //Privates
     private bool _canRun;
@@ -66,21 +69,32 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (other.transform.tag == tagToCheckEndLine)
         {
-            if(!invencible) EndGame();
+            if (!invencible)
+            {
+                MoveBack();
+                EndGame();
+            }
         }
     }
 
+    private void MoveBack()
+    {
+        transform.DOMoveZ(-1f, .3f).SetRelative();
+    }
 
-    private void EndGame()
+
+    private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.INDLE)
     {
         _canRun = false;
         endScreen.SetActive(true);
+        animatorManager.Play(animationType);
     }
 
 
     public void StartToRun()
     {
         _canRun = true;
+        animatorManager.Play(AnimatorManager.AnimationType.RUN);
     }
     #region POWER UPS
     public void SetPowerUpText(string s)
