@@ -21,7 +21,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public GameObject endScreen;
 
-    [Header("TextMeshPro")]
+    [Header("Text")]
     public TextMeshPro uiTextPowerUp;
 
     [Header("Coin Setup")]
@@ -29,11 +29,15 @@ public class PlayerController : Singleton<PlayerController>
 
     public bool invencible = false;
 
+    [Header("Animation")]
+    public AnimatorManager animatorManager;
+
     //Privates
     private bool _canRun;
     private Vector3 _pos;
     private float _currentSpeed;
     private Vector3 _startPosition;
+    private float _baseSpeedToAnimation = 7;
 
     private void Start()
     {
@@ -58,7 +62,8 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (collision.transform.tag == tagToCheckEnemy)
         {
-            if(!invencible) EndGame();
+            MoveBack();
+            EndGame(AnimatorManager.AnimationType.DEAD);
         }
     }
 
@@ -66,21 +71,28 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (other.transform.tag == tagToCheckEndLine)
         {
-            if(!invencible) EndGame();
+            if (!invencible) EndGame();
         }
     }
 
+    private void MoveBack()
+    {
+        transform.DOMoveZ(-1f, .3f).SetRelative();
+    }
 
-    private void EndGame()
+
+    private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.INDLE)
     {
         _canRun = false;
         endScreen.SetActive(true);
+        animatorManager.Play(animationType);
     }
 
 
     public void StartToRun()
     {
         _canRun = true;
+        animatorManager.Play(AnimatorManager.AnimationType.RUN, _currentSpeed / _baseSpeedToAnimation);
     }
     #region POWER UPS
     public void SetPowerUpText(string s)
