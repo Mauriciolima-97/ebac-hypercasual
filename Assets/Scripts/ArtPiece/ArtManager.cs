@@ -1,8 +1,8 @@
-using System.Collections;
+using Ebac.Core.Singleton;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArtManager : MonoBehaviour
+public class ArtManager : Singleton<ArtManager>
 {
     public enum ArtType
     {
@@ -13,6 +13,18 @@ public class ArtManager : MonoBehaviour
     }
 
     public List<ArtSetup> artSetups;
+
+    public ArtSetup GetSetupByType(ArtType artType)
+    {
+        var setup = artSetups.Find(i => i.artType == artType);
+
+        if (setup == null)
+        {
+            Debug.LogError("ArtSetup não encontrado para: " + artType);
+        }
+
+        return setup;
+    }
 }
 
 [System.Serializable]
