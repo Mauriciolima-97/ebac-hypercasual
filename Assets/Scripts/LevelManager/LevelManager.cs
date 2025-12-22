@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]private int _index;
     private GameObject _currentLevel;
 
-    private List<LevelPieceBase> _spawnedPieces = new List<LevelPieceBase>();
+    [SerializeField]private List<LevelPieceBase> _spawnedPieces = new List<LevelPieceBase>();
     private LevelPieceBasedSetup _currSetup;
 
     private void Awake()
@@ -88,6 +88,10 @@ public class LevelManager : MonoBehaviour
 
             spawnedPiece.transform.position = lastPiece.endPiece.position;
         }
+        foreach(var p in spawnedPiece.GetComponentsInChildren<ArtPiece>())
+        {
+
+        }
 
         _spawnedPieces.Add(spawnedPiece);
     }
@@ -98,6 +102,8 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(_spawnedPieces[i].gameObject);
         }
+
+        _spawnedPieces.Clear();
     }
 
     IEnumerator CreateLevelPiecesCoroutine()
