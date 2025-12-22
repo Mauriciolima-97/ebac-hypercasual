@@ -11,13 +11,7 @@ public class ColorManager : Singleton<ColorManager>
     {
         var setup = colorSetups.Find(i => i.artType == artType);
 
-        if (setup == null)
-        {
-            Debug.LogError("ColorSetup não encontrado para: " + artType);
-            return;
-        }
-
-        for (int i = 0; i < materials.Count && i < setup.colors.Count; i++)
+        for (int i = 0; i < materials.Count; i++)
         {
             materials[i].SetColor("_Color", setup.colors[i]);
         }
