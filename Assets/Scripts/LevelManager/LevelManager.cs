@@ -1,29 +1,34 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class LevelManager : MonoBehaviour
 {
+    [Header("Level Containers")]
     public Transform container;
 
+    [Header("Prefabs")]
     public List<GameObject> levels;
-
     public List<LevelPieceBasedSetup> levelPieceBasedSetups;
 
-    public float timeBetweenPieces = .3f;
+    [Header("Settings")]
+    public float timeBetweenPieces = 0.3f;
 
-    [SerializeField]private int _index;
+    [SerializeField] private int _index;
+
     private GameObject _currentLevel;
-
-    [SerializeField]private List<LevelPieceBase> _spawnedPieces = new List<LevelPieceBase>();
     private LevelPieceBasedSetup _currSetup;
+
+    [SerializeField]
+    private List<LevelPieceBase> _spawnedPieces = new List<LevelPieceBase>();
 
     private void Awake()
     {
-        //SpawnNextLevel();
+        // SpawnNextLevel();
         CreateLevelPieces();
     }
+
+    #region Level Prefab
 
     private void SpawnNextLevel()
     {
@@ -32,11 +37,12 @@ public class LevelManager : MonoBehaviour
             Destroy(_currentLevel);
             _index++;
 
-            if (_index >= levels.Count)
+            if(_index >= levels.Count)
             {
                 ResetLevelIndex();
             }
         }
+
         _currentLevel = Instantiate(levels[_index], container);
         _currentLevel.transform.localPosition = Vector3.zero;
     }
@@ -45,11 +51,15 @@ public class LevelManager : MonoBehaviour
     {
         _index = 0;
     }
-    #region
+
+    #endregion
+
+    #region Level Pieces
+
     private void CreateLevelPieces()
     {
-        cleanSpawnedPieces();
-
+        CleanSpawnedPieces();
+  
 
         if (_currSetup != null)
         {
@@ -61,16 +71,18 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-            _currSetup = levelPieceBasedSetups[_index];
+        _currSetup = levelPieceBasedSetups[_index];
 
-            for (int i = 0; i <_currSetup.piecesStartNumber; i++)
+        for (int i = 0; i < _currSetup.piecesStartNumber; i++)
         {
             CreateLevelPiece(_currSetup.levelPiecesStart);
         }
+
         for (int i = 0; i < _currSetup.piecesNumber; i++)
         {
             CreateLevelPiece(_currSetup.levelPieces);
         }
+
         for (int i = 0; i < _currSetup.piecesEndNumber; i++)
         {
             CreateLevelPiece(_currSetup.levelPiecesEnd);
@@ -84,23 +96,28 @@ public class LevelManager : MonoBehaviour
         var piece = list[Random.Range(0, list.Count)];
         var spawnedPiece = Instantiate(piece, container);
 
-        if(_spawnedPieces.Count > 0)
+        if (_spawnedPieces.Count > 0)
         {
             var lastPiece = _spawnedPieces[_spawnedPieces.Count - 1];
 
             spawnedPiece.transform.position = lastPiece.endPiece.position;
         }
-        foreach(var p in spawnedPiece.GetComponentsInChildren<ArtPiece>())
+        else
         {
-            p.ChangePiece(ArtManager.Instance.GetSetupByType(_currSetup.artType).gameObject);
+            spawnedPiece.transform.localPosition = Vector3.zero;
         }
 
-        _spawnedPieces.Add(spawnedPiece);
+        foreach(var p in spawnedPiece.GetComponentsInChildren<ArtPiece>())
+        {
+            //p.ChangePiece(ArtManager.Instance.GetSetupByType(_currSetup.artType).gameObject);
+        }
+
+            _spawnedPieces.Add(spawnedPiece);
     }
 
-    private void cleanSpawnedPieces()
+    private void CleanSpawnedPieces()
     {
-        for(int i = _spawnedPieces.Count - 1; i >= 0; i--)
+        for (int i = _spawnedPieces.Count - 1; i >= 0; i--)
         {
             Destroy(_spawnedPieces[i].gameObject);
         }
@@ -108,7 +125,7 @@ public class LevelManager : MonoBehaviour
         _spawnedPieces.Clear();
     }
 
-    IEnumerator CreateLevelPiecesCoroutine()
+    private IEnumerator CreateLevelPiecesCoroutine()
     {
         _spawnedPieces = new List<LevelPieceBase>();
 
@@ -117,15 +134,15 @@ public class LevelManager : MonoBehaviour
             CreateLevelPiece(_currSetup.levelPieces);
             yield return new WaitForSeconds(timeBetweenPieces);
         }
-
     }
-    #endregion
 
+    #endregion
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
-            SpawnNextLevel();
+            CreateLevelPieces();
         }
     }
+
 }
