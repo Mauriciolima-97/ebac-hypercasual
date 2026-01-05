@@ -1,3 +1,4 @@
+using System.Collections;
 using Ebac.Core.Singleton;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,20 +17,13 @@ public class ArtManager : Singleton<ArtManager>
 
     public ArtSetup GetSetupByType(ArtType artType)
     {
-        var setup = artSetups.Find(i => i.artType == artType);
-
-        if (setup == null)
-        {
-            Debug.LogError("ArtSetup não encontrado para: " + artType);
-        }
-
-        return setup;
+        return artSetups.Find(i => i.artType == artType);
     }
-}
 
-[System.Serializable]
-public class ArtSetup
-{
-    public ArtManager.ArtType artType;
-    public GameObject gameObject;
+    [System.Serializable]
+    public class ArtSetup
+    {
+        public ArtManager.ArtType artType;
+        public GameObject gameObject;
+    }
 }

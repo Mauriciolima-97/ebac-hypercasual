@@ -1,0 +1,4 @@
+repository "ebac-hypercasual/ebac-hypercasual@4673828018816@cloud"
+  path "/"
+    br "/main"
+    co "/main"
