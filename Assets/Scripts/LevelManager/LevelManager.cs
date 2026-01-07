@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private List<LevelPieceBase> _spawnedPieces = new List<LevelPieceBase>();
 
-    private void Awake()
+    private void Start()
     {
         // SpawnNextLevel();
         CreateLevelPieces();
@@ -109,7 +109,7 @@ public class LevelManager : MonoBehaviour
 
         foreach(var p in spawnedPiece.GetComponentsInChildren<ArtPiece>())
         {
-            //p.ChangePiece(ArtManager.Instance.GetSetupByType(_currSetup.artType).gameObject);
+            p.ChangePiece(ArtManager.Instance.GetSetupByType(_currSetup.artType).gameObject);
         }
 
             _spawnedPieces.Add(spawnedPiece);
