@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3266704602211053360}
   m_Layer: 0
   m_Name: PFB_Coin
-  m_TagString: Untagged
+  m_TagString: CoinCollector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,6 +71,7 @@ MonoBehaviour:
   particleSystem: {fileID: 0}
   timeToHide: 3
   graphicItem: {fileID: 2429295074298929079}
+  audioSource: {fileID: 0}
   collider: {fileID: 2188938685769091}
   collect: 0
   lerp: 5
@@ -86,6 +87,7 @@ GameObject:
   - component: {fileID: 1633172937682427599}
   - component: {fileID: 5927856086454704236}
   - component: {fileID: 6861518205125615290}
+  - component: {fileID: 5648581062263269198}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -158,3 +160,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5648581062263269198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2429295074298929079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: becaccc08757b9b4c86e03f25cb884ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+  meshRenderer: {fileID: 6861518205125615290}

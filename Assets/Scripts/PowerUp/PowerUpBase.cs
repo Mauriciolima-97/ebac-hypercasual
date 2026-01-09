@@ -12,6 +12,8 @@ public class PowerUpBase : ItemCollactableBase
         base.OnCollect();
         StartPowerUp();
 
+        PlayerController.Instance.Bounce();
+
     }
     protected virtual void StartPowerUp()
     {
