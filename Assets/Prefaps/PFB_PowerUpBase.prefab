@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3892413722904868643}
   - component: {fileID: 6557594091234862082}
   - component: {fileID: 748675060654459118}
+  - component: {fileID: 5187123539000648447}
   m_Layer: 0
   m_Name: PFB_PowerUpBase
   m_TagString: Untagged
@@ -71,8 +72,24 @@ MonoBehaviour:
   particleSystem: {fileID: 0}
   timeToHide: 3
   graphicItem: {fileID: 7104066818862218821}
+  audioSource: {fileID: 0}
   duration: 2
   sizeAmount: 7
+--- !u!114 &5187123539000648447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6946937008972290071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b16b58f2235f84da1019f1e651e6cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleDuration: 0.2
+  scaleBounce: 1.2
+  ease: 28
 --- !u!1 &7104066818862218821
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,6 +101,8 @@ GameObject:
   - component: {fileID: 2746944731440070059}
   - component: {fileID: 3487248281960835145}
   - component: {fileID: 5746975397102966554}
+  - component: {fileID: 2311836554564208117}
+  - component: {fileID: 5674125788840442671}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -156,3 +175,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2311836554564208117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104066818862218821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: becaccc08757b9b4c86e03f25cb884ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+  meshRenderer: {fileID: 5746975397102966554}
+  startColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &5674125788840442671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104066818862218821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b16b58f2235f84da1019f1e651e6cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleDuration: 0.2
+  scaleBounce: 1.2
+  ease: 28
