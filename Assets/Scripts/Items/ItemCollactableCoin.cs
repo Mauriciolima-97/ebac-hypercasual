@@ -12,7 +12,7 @@ public class ItemCollactableCoin : ItemCollactableBase
 
     private void Start()
     {
-        //CoinsAnimationManager.Instance.RegisterCoin(this);
+        CoinsAnimationManager.Instance.RegisterCoin(this);
     }
     protected override void OnCollect()
     {
