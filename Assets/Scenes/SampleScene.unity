@@ -1226,6 +1226,7 @@ MonoBehaviour:
   invencible: 0
   animatorManager: {fileID: 1389643986}
   vfxDeath: {fileID: 839647393}
+  limitVector: {x: -5, y: 4}
   _bounceHelper: {fileID: 729887437}
 --- !u!114 &729887437
 MonoBehaviour:
